@@ -64,7 +64,7 @@
 
 <script setup>
 // Importacion de la funcion "ref" de Vue 3
-import { ref, computed, getCurrentInstance, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 const nombreInvalido = computed(() => persona.value.nombre.length < 1);
 const apellidoInvalido = computed(() => persona.value.apellido.length < 1);
@@ -75,7 +75,7 @@ defineOptions({
     name: "formulario-persona",
 });
 
-const instance = getCurrentInstance();
+
 const nombre = ref(null);
 
 // Declaracion de una variable reactiva "persona" con propiedades nombre, apellido y email
