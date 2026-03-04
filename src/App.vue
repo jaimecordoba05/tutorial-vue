@@ -40,7 +40,6 @@ const listadoPersonas = async () => {
 };
 
 const agregarPersona = async (persona) => {
-  // Metodo para agregar una persona
   try {
     const response = await fetch(
       "https://my-json-server.typicode.com/rmarabini/people/personas/",
@@ -51,7 +50,17 @@ const agregarPersona = async (persona) => {
       }
     );
     const personaCreada = await response.json();
-    personas.value = [...personas.value, personaCreada];
+
+    // Si la API siempre devuelve el mismo ID, 
+    // le asignamos uno basado en el tiempo para que sea único.
+    const personaConIdUnico = {
+      ...personaCreada,
+      id: personas.value.length > 0 
+          ? Math.max(...personas.value.map(p => p.id)) + 1 
+          : Date.now()
+    };
+
+    personas.value = [...personas.value, personaConIdUnico];
   } catch (error) {
     console.error(error);
   }
