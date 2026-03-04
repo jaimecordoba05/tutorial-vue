@@ -51,13 +51,14 @@ const agregarPersona = async (persona) => {
     );
     const personaCreada = await response.json();
 
-    // Si la API siempre devuelve el mismo ID, 
+    // Si la API siempre devuelve el mismo ID,
     // le asignamos uno basado en el tiempo para que sea único.
     const personaConIdUnico = {
       ...personaCreada,
-      id: personas.value.length > 0 
-          ? Math.max(...personas.value.map(p => p.id)) + 1 
-          : Date.now()
+      id:
+        personas.value.length > 0
+          ? Math.max(...personas.value.map((p) => p.id)) + 1
+          : Date.now(),
     };
 
     personas.value = [...personas.value, personaConIdUnico];
