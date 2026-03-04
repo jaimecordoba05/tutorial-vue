@@ -32,4 +32,4 @@ import "../node_modules/bootstrap/dist/js/bootstrap.js"
 // Importa el archivo CSS de Bootstrap desde node_modules
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
-app.config.devtools = true // Enable devtools in production (use with caution)
+// app.config.devtools = false // Enable devtools in production (use with caution)

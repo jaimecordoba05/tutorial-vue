@@ -97,9 +97,9 @@ const enviarFormulario = () => {
         error.value = true;
         return;
     }
-    emit('add-persona', persona.value);
-    const input = instance.refs.nombre;
-    input?.focus();
+    emit('add-persona', { ...persona.value });
+    //const input = instance.refs.nombre;
+    //input?.focus();
     // Limpiamos el formulario
     persona.value = {
         nombre: '',

@@ -5,7 +5,7 @@
     <div v-if="!personas.length" class="alert alert-info" role="alert">
         No se han encontrado personas
     </div>
-    <div v-else>
+    <div v-else id="tabla-personas">
         <!-- Tabla HTML para mostrar la informacion de personas -->
         <table class="table">
             <!-- Encabezado de la tabla -->
@@ -76,6 +76,7 @@ import { ref } from 'vue';
 const editando = ref(null);
 const personaEditada = ref(null);
 
+const emit = defineEmits(['actualizar-persona', 'delete-persona'])
 const editarPersona = (persona) => {
     personaEditada.value = { ...persona };
     editando.value = persona.id;
