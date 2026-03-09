@@ -28,8 +28,11 @@ SECRET_KEY = 'django-insecure-4*9)6yodv&dkn5z!72!o&#anp!3i)m+pbz&7#bn+9+(!%qnc#4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'django-420p.onrender.com',
+]
 
 # Application definition
 
@@ -133,8 +136,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [
+CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'https://tutorial-vue-cezb.onrender.com',
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
