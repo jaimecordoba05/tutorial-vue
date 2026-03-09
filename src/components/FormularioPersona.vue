@@ -11,43 +11,24 @@
             <div class="form-group">
               <!-- Etiqueta y campo de entrada para el nombre con binding bidireccional v-model -->
               <label>Nombre</label>
-              <input
-                ref="nombre"
-                v-model="persona.nombre"
-                type="text"
-                class="form-control"
-                data-cy="name"
-                :class="{ 'is-invalid': procesando && nombreInvalido }"
-                @focus="resetEstado"
-              />
+              <input ref="nombre" v-model="persona.nombre" type="text" class="form-control" data-cy="name"
+                :class="{ 'is-invalid': procesando && nombreInvalido }" @focus="resetEstado" />
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
               <!-- Etiqueta y campo de entrada para el apellido con binding bidireccional v-model -->
               <label>Apellido</label>
-              <input
-                v-model="persona.apellido"
-                type="text"
-                class="form-control"
-                data-cy="surname"
-                :class="{ 'is-invalid': procesando && apellidoInvalido }"
-                @focus="resetEstado"
-              />
+              <input v-model="persona.apellido" type="text" class="form-control" data-cy="surname"
+                :class="{ 'is-invalid': procesando && apellidoInvalido }" @focus="resetEstado" />
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
               <!-- Etiqueta y campo de entrada para el correo electronico con binding bidireccional v-model -->
               <label>Email</label>
-              <input
-                v-model="persona.email"
-                type="email"
-                class="form-control"
-                data-cy="email"
-                :class="{ 'is-invalid': procesando && emailInvalido }"
-                @focus="resetEstado"
-              />
+              <input v-model="persona.email" type="email" class="form-control" data-cy="email"
+                :class="{ 'is-invalid': procesando && emailInvalido }" @focus="resetEstado" />
             </div>
           </div>
         </div>
@@ -68,11 +49,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div
-              v-if="error && procesando"
-              class="alert alert-danger"
-              role="alert"
-            >
+            <div v-if="error && procesando" class="alert alert-danger" role="alert">
               Debes rellenar todos los campos!
             </div>
             <div v-if="correcto" class="alert alert-success" role="alert">
@@ -99,7 +76,6 @@ defineOptions({
 });
 
 const instance = getCurrentInstance();
-const nombre = ref(null);
 
 // Declaracion de una variable reactiva "persona" con propiedades nombre, apellido y email
 const persona = ref({
@@ -114,22 +90,24 @@ const error = ref(false);
 
 const emit = defineEmits(["add-persona"]);
 
+const nombre = ref(null);
+
 const enviarFormulario = () => {
   procesando.value = true;
   resetEstado();
+  // Comprobamos la presencia de errores
   if (nombreInvalido.value || apellidoInvalido.value || emailInvalido.value) {
     error.value = true;
     return;
   }
-  emit("add-persona", persona.value);
-  const input = instance.refs.nombre;
-  input?.focus();
+  emit('add-persona', persona.value);
   // Limpiamos el formulario
   persona.value = {
-    nombre: "",
-    apellido: "",
-    email: "",
+    nombre: '',
+    apellido: '',
+    email: '',
   };
+  nombre.value?.focus();
   error.value = false;
   correcto.value = true;
   procesando.value = false;

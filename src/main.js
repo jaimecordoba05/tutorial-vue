@@ -18,12 +18,19 @@ app.mount('#app')
 import { createApp } from "vue";
 // Importa el componente principal App desde el archivo App.vue
 import App from "./App.vue";
+import router from './router'
+import { createPinia } from "pinia";
 // IMPORTANTE: Puedes querer limpiar el archivo main.css por defecto
+
+const app = createApp(App)
+app.use(createPinia())
+app.use(router)
+app.mount("#app")
+
 // ya que las opciones por defecto pueden no satisfacerte.
 import "./assets/main.css";
 // Crea una instancia de la aplicacion Vue y monta el
 // componente App en el elemento con el ID 'app'
-createApp(App).mount("#app");
 // Las dos lineas siguientes haran que Bootstrap este disponible para tu
 // aplicacion si Bootstrap ha sido instalado.
 // Las instrucciones de instalacion estan disponibles mas adelante en esta guia.
