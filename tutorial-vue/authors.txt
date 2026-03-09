@@ -1,0 +1,4 @@
+Equipo: 8
+Autores:
+- Jaime Córdoba
+- Sergio Homobono
