@@ -22,6 +22,10 @@ import TablaPersonas from "@/components/TablaPersonas.vue";
 // NUEVO:
 import FormularioPersona from "@/components/FormularioPersona.vue";
 import { ref, onMounted } from "vue";
+
+const myURL = import.meta.env.VITE_DJANGOURL
+const BASE_URL = `${myURL}/api/v1/personas/`;
+
 defineOptions({
   name: "app",
 });
@@ -30,7 +34,7 @@ const listadoPersonas = async () => {
   // Metodo para obtener un listado de personas
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/v1/personas/"
+      BASE_URL
     );
     personas.value = await response.json();
   } catch (error) {
@@ -46,7 +50,7 @@ const agregarPersona = async (persona) => {
   // Metodo para agregar una persona
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/v1/personas/",
+      BASE_URL,
       {
         method: "POST",
         body: JSON.stringify(persona),
@@ -69,7 +73,7 @@ const eliminarPersona = async (persona_id) => {
   // Metodo para eliminar una persona
   try {
     await fetch(
-      "http://127.0.0.1:8000/api/v1/personas/" +
+      BASE_URL +
       persona_id +
       "/",
       {
@@ -85,7 +89,7 @@ const actualizarPersona = async (id, personaActualizada) => {
   // Metodo para actualizar una persona
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/v1/personas/" +
+      BASE_URL +
       personaActualizada.id +
       "/",
       {
